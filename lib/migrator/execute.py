@@ -15,8 +15,10 @@ exec_prefix = sys.argv[1]
 connection_string = sys.argv[2]
 migrations_folder = sys.argv[3]
 
+path_depth = "../" * (len(exec_prefix.split("/")))
+
 # read journal
-with open(f'{migrations_folder}/journal.json', 'r') as f:
+with open(f'./{path_depth}{migrations_folder}/journal.json', 'r') as f:
     journal = json.loads(f.read())
 
 print("Connecting to database...")
@@ -44,7 +46,7 @@ last_committed_migration_index = journal.index(f'{last_migration}.sql')
 # execute pending migrations
 for migration in journal[last_committed_migration_index + 1:]:
     print(f'Executing {migration}...')
-    with open(f'{migrations_folder}/{migration}') as f:
+    with open(f'./{path_depth}{migrations_folder}/{migration}') as f:
         cursor.execute(f.read())
 
     cursor.execute("""

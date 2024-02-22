@@ -16,15 +16,17 @@ migrations_folder = sys.argv[3]
 
 name = sys.argv[4]
 
-with open(f'{migrations_folder}/journal.json', 'r') as f:
+path_depth = "../" * (len(path_prefix.split("/")))
+
+with open(f'./{path_depth}{migrations_folder}/journal.json', 'r') as f:
     journal = json.loads(f.read())
 
 n_migration = len(journal)
 
-with open(f'{migrations_folder}/{n_migration:04d}{name}.sql', 'w') as f:
+with open(f'./{path_depth}{migrations_folder}/{n_migration:04d}{name}.sql', 'w') as f:
     f.write(f'-- {name}\n\n')
 
-with open(f'{migrations_folder}/journal.json', 'w') as f:
+with open(f'./{path_depth}{migrations_folder}/journal.json', 'w') as f:
     journal.append(f'{n_migration:04d}{name}.sql')
     f.write(json.dumps(journal))
 

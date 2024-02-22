@@ -5,13 +5,13 @@ cd $2
 
 case "$1" in
     init)
-      poetry run python ./lib/migrator/init.py $3/../lib/migrator $4 $5
+      poetry run python ./lib/migrator/init.py $2 $3 $4
         ;;
     make)
-      poetry run python ./lib/migrator/make.py $3/../lib/migrator $4 $5 $6
+      poetry run python ./lib/migrator/make.py $2 $3 $4 $5
             ;;
     execute)
-      poetry run python ./lib/migrator/execute.py $3/../lib/migrator $4 $4
+      poetry run python ./lib/migrator/execute.py $2 $3 $4
             ;;
     *)
         echo "Usage: $0 {init|make|execute} [-args]"
