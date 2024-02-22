@@ -15,7 +15,7 @@ exec_prefix = sys.argv[1]
 connection_string = sys.argv[2]
 migrations_folder = sys.argv[3]
 
-path_depth = "../" * (len(exec_prefix.split("/")))
+path_depth = "../" * (len(exec_prefix.split("/")) - 1)
 
 # read journal
 with open(f'./{path_depth}{migrations_folder}/journal.json', 'r') as f:

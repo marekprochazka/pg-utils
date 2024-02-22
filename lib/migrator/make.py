@@ -16,10 +16,11 @@ migrations_folder = sys.argv[3]
 
 name = sys.argv[4]
 
-path_depth = "../" * (len(path_prefix.split("/")))
+path_depth = "../" * (len(path_prefix.split("/")) - 1)
 
 with open(f'./{path_depth}{migrations_folder}/journal.json', 'r') as f:
     journal = json.loads(f.read())
+
 
 n_migration = len(journal)
 
