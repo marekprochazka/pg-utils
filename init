@@ -4,3 +4,5 @@ cd $1/lib/type-gen
 npm install
 
 cd ../..
+
+poetery install

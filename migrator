@@ -1,0 +1,19 @@
+#!/bin/bash
+
+cd $2
+
+case "$1" in
+    init)
+      poetry run python ./lib/migrator/init.py ./lib/migrator $3 $4
+        ;;
+    make)
+        poetry run python ./lib/migrator/make.py ./lib/migrator $3 $4 $5
+            ;;
+    execute)
+        poetry run python ./lib/migrator/execute.py ./lib/migrator $3 $4
+            ;;
+    *)
+        echo "Usage: $0 {init|make|execute} [-args]"
+        exit 1
+
+esac

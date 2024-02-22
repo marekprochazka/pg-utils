@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "pg-utils"
+version = "0.1.0"
+description = "Migrator tool for postgres DB's"
+authors = ["Marek Procházka <m.prochazka2002@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+psycopg = "^3.1.18"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
